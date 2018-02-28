@@ -35,6 +35,10 @@ public class MainViewPrsenter extends BasePresenter {
 
         Map<String, String> params = new HashMap<>();
         params.put("tel", phoneNumber);
+        /**
+         * 此时的回调为：MainViewPrsenter为主动调用者A，HttpUtil为被调用者B，A-->B(sendGetRequest),B方法异步执行
+         * 执行完之后通过handler子线程告诉UI线程结果，
+         */
         HttpUtil httpUtil = new HttpUtil(new HttpUtil.HttpResponse() {
             @Override
             public void onSucess(Object object) {
